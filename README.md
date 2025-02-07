@@ -17,6 +17,15 @@ pip install -r requirements.txt
 
 ### 2) Patterns
 
+Here are some of the patterns you can use to build your own agent and workflows.
+
+1. [Prompt Chaining](./prompt-chaining/main.py)
+2. [Parallelization](./parallelization/main.py)
+3. [Routing](./routing/main.py)
+4. [Orchestrator-worker](./orchestrator-worker/main.py)
+5. [Evaluator-optimizer](./evaluator-optimizer/main.py)
+6. [Agent](./agent/main.py)
+
 You can run all the examples by running the following command.
 
 ```bash
@@ -66,6 +75,14 @@ In the evaluator-optimizer workflow, one LLM call generates a response while ano
 This workflow is particularly effective when we have clear evaluation criteria, and when iterative refinement provides measurable value. The two signs of good fit are, first, that LLM responses can be demonstrably improved when a human articulates their feedback; and second, that the LLM can provide such feedback. This is analogous to the iterative writing process a human writer might go through when producing a polished document.
 
 ![Evaluator-optimizer Flow](./evaluator-optimizer/flow.png)
+
+#### 2.5) Agent
+
+Agents can handle sophisticated tasks, but their implementation is often straightforward. They are typically just LLMs using tools based on environmental feedback in a loop. It is therefore crucial to design toolsets and their documentation clearly and thoughtfully.
+
+Agents can be used for open-ended problems where it’s difficult or impossible to predict the required number of steps, and where you can’t hardcode a fixed path. The LLM will potentially operate for many turns, and you must have some level of trust in its decision-making. Agents' autonomy makes them ideal for scaling tasks in trusted environments.
+
+![Agent Flow](./agent/flow.png)
 
 ### 3) References
 
