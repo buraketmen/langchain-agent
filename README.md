@@ -93,7 +93,9 @@ Agents can be used for open-ended problems where it’s difficult or impossible 
 
 ![Agent Flow](./agent/flow.png)
 
-##### 2.6.1) Pre-built
+##### 2.7) Agent (pre-built)
+
+LangGraph provides a set of pre-built agents that can be used out of the box. These agents are designed to be used in a variety of use cases and can be customized to fit your specific needs.
 
 ![Agent pre-built Flow](./agent-prebuilt/flow.png)
 
