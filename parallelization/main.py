@@ -1,6 +1,6 @@
 from langchain_ollama import ChatOllama
 from langgraph.graph import StateGraph, START, END
-from state import JokeState
+from state import GraphState
 from nodes import Nodes
 
 LLM = ChatOllama(model="qwen2:7b") # Local model
@@ -8,7 +8,7 @@ print('Model loaded with Ollama.')
 
 nodes = Nodes(llm=LLM)
 print('Initializing workflow...')
-workflow = StateGraph(JokeState)
+workflow = StateGraph(GraphState)
 
 print('Adding nodes...')
 workflow.add_node('call_llm_1', nodes.call_llm1)

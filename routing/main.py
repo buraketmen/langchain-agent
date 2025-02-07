@@ -1,19 +1,17 @@
 from langchain_ollama import ChatOllama
 from langgraph.graph import StateGraph, START, END
-from state import RouterState
+from state import GraphState
 from schemas import RouterSchema
 from nodes import Nodes
 
 LLM = ChatOllama(model="qwen2:7b") # Local model
 print('Model loaded with Ollama.')
 
-# Augment the LLM with schema for structured output
-router = LLM.with_structured_output(schema=RouterSchema)
 
-nodes = Nodes(llm=LLM, router=router)
+nodes = Nodes(llm=LLM)
 
 print('Initializing workflow...')
-workflow = StateGraph(RouterState)
+workflow = StateGraph(GraphState)
 
 print('Adding nodes...')
 workflow.add_node('llm_call_1', nodes.llm_call_1)

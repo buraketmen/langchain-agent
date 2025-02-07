@@ -1,6 +1,6 @@
 from typing_extensions import TypedDict
 
-class JokeState(TypedDict):
+class GraphState(TypedDict):
     topic:str
     joke: str
     improved_joke: str
