@@ -1,11 +1,19 @@
 ## LANGCHAIN-AGENT (WORKFLOWS)
 
-**Agent** can be defined in several ways. Some customers define agents as fully autonomous systems that operate independently over extended periods, using various tools to accomplish complex tasks. Others use the term to describe more prescriptive implementations that follow predefined workflows.
+**Agent** can be defined in several ways. Some people define agents as fully autonomous systems that operate independently over extended periods, using various tools to accomplish complex tasks. Others use the term to describe more prescriptive implementations that follow predefined workflows.
 
 - **Workflows** are systems where LLMs and tools are orchestrated through predefined code paths.
 - **Agents**, are systems where LLMs dynamically direct their own processes and tool usage, maintaining control over how they accomplish tasks.
 
 ### 1) Usage
+
+You can use any LLM that supports tool calling. However, If you want to use a local LLM, I recommend using **[ollama](https://ollama.com/)**. All examples leverage the **qwen2:7b** model. After installing Ollama, you can retrieve the model by executing the following command.
+
+```bash
+ollama pull qwen2:7b
+```
+
+Clone the repository and install the required dependencies to run the examples.
 
 ```bash
 git clone https://github.com/buraketmen/langchain-agent.git
@@ -60,7 +68,7 @@ Routing works well for complex tasks where there are distinct categories that ar
 
 ![Routing Flow](./routing/flow.png)
 
-#### 2.3) Orchestrator-worker
+#### 2.4) Orchestrator-worker
 
 In the orchestrator-workers workflow, a central LLM dynamically breaks down tasks, delegates them to worker LLMs, and synthesizes their results.
 
@@ -68,7 +76,7 @@ This workflow is well-suited for complex tasks where you can’t predict the sub
 
 ![Orchestrator-worker Flow](./orchestrator-worker/flow.png)
 
-#### 2.4) Evaluator-Optimizer
+#### 2.5) Evaluator-Optimizer
 
 In the evaluator-optimizer workflow, one LLM call generates a response while another provides evaluation and feedback in a loop.
 
@@ -76,7 +84,7 @@ This workflow is particularly effective when we have clear evaluation criteria, 
 
 ![Evaluator-optimizer Flow](./evaluator-optimizer/flow.png)
 
-#### 2.5) Agent
+#### 2.6) Agent
 
 Agents can handle sophisticated tasks, but their implementation is often straightforward. They are typically just LLMs using tools based on environmental feedback in a loop. It is therefore crucial to design toolsets and their documentation clearly and thoughtfully.
 
