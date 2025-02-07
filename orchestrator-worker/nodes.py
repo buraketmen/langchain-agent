@@ -7,13 +7,13 @@ from langchain_core.language_models import BaseChatModel
 class Nodes:
     def __init__(self, llm: BaseChatModel):
         self.llm: BaseChatModel = llm
-        self.planner = llm.with_structured_output(Sections)
+        self.planner = llm.with_structured_output(schema=Sections)
 
     def orchestrator(self, state: GraphState) -> dict:
         """Orchestrator that generates a plan for the report."""
-        report_sections: Type[Sections] = self.planner.invoke(
+        report_sections: Sections = self.planner.invoke(
             [
-                SystemMessage(content="Generate a plan for the report."),
+                SystemMessage(content="Generate a plan for the report. The report should be divided into sections. Each section should have 'name' and 'description'."),
                 HumanMessage(content=f"Here is the report topic: {state['topic']}"),
             ]
         )
@@ -29,8 +29,13 @@ class Nodes:
         """Worker writes a section of the report."""
         section = self.llm.invoke(
             [
-                SystemMessage(content="Write a report section following the provided name and description. Include no preamble for each section."),
-                HumanMessage(content=f"Here is the section name: {state['section'].name} and description: {state['section'].description}"),
+                SystemMessage(content="""
+                Write a report section following the provided:
+                - name
+                - description
+                
+                Include no preamble for each section."""),
+                HumanMessage(content=f"Here is the section name: {state['section'].name}, description: {state['section'].description}"),
             ]
         )
         # All the workes write to the same key in parallel
