@@ -11,7 +11,6 @@ class Nodes:
 
     def llm_call(self, state: MessagesState) -> dict:
         """Decide whether to call a tool or not."""
-        print('calling llm')
         return {
             "messages": [
                 self.llm_with_tools.invoke(
