@@ -33,6 +33,7 @@ Here are some of the patterns you can use to build your own agent and workflows.
 4. [Orchestrator-worker](./orchestrator-worker/main.py)
 5. [Evaluator-optimizer](./evaluator-optimizer/main.py)
 6. [Agent](./agent/main.py)
+7. [Agent pre-built](./agent-prebuilt/main.py)
 
 You can run all the examples by running the following command.
 
@@ -91,6 +92,10 @@ Agents can handle sophisticated tasks, but their implementation is often straigh
 Agents can be used for open-ended problems where it’s difficult or impossible to predict the required number of steps, and where you can’t hardcode a fixed path. The LLM will potentially operate for many turns, and you must have some level of trust in its decision-making. Agents' autonomy makes them ideal for scaling tasks in trusted environments.
 
 ![Agent Flow](./agent/flow.png)
+
+##### 2.6.1) Pre-built
+
+![Agent pre-built Flow](./agent-prebuilt/flow.png)
 
 ### 3) References
 
