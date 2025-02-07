@@ -42,7 +42,7 @@ python <example-name>/main.py
 # e.g. python prompt-chaining/main.py
 ```
 
-#### 2.1) Prompt Chaining
+#### 2.1) Workflow: Prompt Chaining
 
 Prompt chaining decomposes a task into a sequence of steps, where each LLM call processes the output of the previous one. You can add programmatic checks (see "GATE in the diagram below) on any intermediate steps to ensure that the process is still on track.
 
@@ -50,7 +50,7 @@ This workflow is ideal for situations where the task can be easily and cleanly d
 
 ![Promp-chaining Flow](./prompt-chaining/flow.png)
 
-#### 2.2) Parallelization
+#### 2.2) Workflow: Parallelization
 
 LLMs can sometimes work simultaneously on a task and have their outputs aggregated programmatically. This workflow, parallelization, manifests in two key variations:
 
@@ -61,7 +61,7 @@ Parallelization is effective when the divided subtasks can be parallelized for s
 
 ![Parallelization Flow](./parallelization/flow.png)
 
-#### 2.3) Routing
+#### 2.3) Workflow: Routing
 
 Routing classifies an input and directs it to a specialized followup task. This workflow allows for separation of concerns, and building more specialized prompts. Without this workflow, optimizing for one kind of input can hurt performance on other inputs.
 
@@ -69,7 +69,7 @@ Routing works well for complex tasks where there are distinct categories that ar
 
 ![Routing Flow](./routing/flow.png)
 
-#### 2.4) Orchestrator-worker
+#### 2.4) Workflow: Orchestrator-worker
 
 In the orchestrator-workers workflow, a central LLM dynamically breaks down tasks, delegates them to worker LLMs, and synthesizes their results.
 
@@ -77,7 +77,7 @@ This workflow is well-suited for complex tasks where you can’t predict the sub
 
 ![Orchestrator-worker Flow](./orchestrator-worker/flow.png)
 
-#### 2.5) Evaluator-Optimizer
+#### 2.5) Workflow: Evaluator-Optimizer
 
 In the evaluator-optimizer workflow, one LLM call generates a response while another provides evaluation and feedback in a loop.
 
@@ -93,7 +93,7 @@ Agents can be used for open-ended problems where it’s difficult or impossible 
 
 ![Agent Flow](./agent/flow.png)
 
-##### 2.7) Agent (pre-built)
+##### 2.7) Agent: Pre-built
 
 LangGraph provides a set of pre-built agents that can be used out of the box. These agents are designed to be used in a variety of use cases and can be customized to fit your specific needs.
 
