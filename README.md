@@ -27,13 +27,13 @@ pip install -r requirements.txt
 
 Here are some of the patterns you can use to build your own agent and workflows.
 
-1. [Prompt Chaining](./prompt-chaining/main.py)
-2. [Parallelization](./parallelization/main.py)
-3. [Routing](./routing/main.py)
-4. [Orchestrator-worker](./orchestrator-worker/main.py)
-5. [Evaluator-optimizer](./evaluator-optimizer/main.py)
+1. [Workflow: Prompt Chaining](./prompt-chaining/main.py)
+2. [Workflow: Parallelization](./parallelization/main.py)
+3. [Workflow: Routing](./routing/main.py)
+4. [Workflow: Orchestrator-worker](./orchestrator-worker/main.py)
+5. [Workflow: Evaluator-optimizer](./evaluator-optimizer/main.py)
 6. [Agent](./agent/main.py)
-7. [Agent pre-built](./agent-prebuilt/main.py)
+7. [Agent: Pre-built](./agent-prebuilt/main.py)
 
 You can run all the examples by running the following command.
 
