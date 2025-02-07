@@ -57,7 +57,15 @@ In the orchestrator-workers workflow, a central LLM dynamically breaks down task
 
 This workflow is well-suited for complex tasks where you can’t predict the subtasks needed (in coding, for example, the number of files that need to be changed and the nature of the change in each file likely depend on the task). Whereas it’s topographically similar, the key difference from parallelization is its flexibility—subtasks aren't pre-defined, but determined by the orchestrator based on the specific input.
 
-![Routing Flow](./orchestrator-worker/flow.png)
+![Orchestrator-worker Flow](./orchestrator-worker/flow.png)
+
+#### 2.4) Evaluator-Optimizer
+
+In the evaluator-optimizer workflow, one LLM call generates a response while another provides evaluation and feedback in a loop.
+
+This workflow is particularly effective when we have clear evaluation criteria, and when iterative refinement provides measurable value. The two signs of good fit are, first, that LLM responses can be demonstrably improved when a human articulates their feedback; and second, that the LLM can provide such feedback. This is analogous to the iterative writing process a human writer might go through when producing a polished document.
+
+![Evaluator-optimizer Flow](./evaluator-optimizer/flow.png)
 
 ### 3) References
 
