@@ -10,7 +10,7 @@ venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-### 2) Structure
+### 2) Patterns
 
 You can run all the examples by running the following command.
 
@@ -30,3 +30,7 @@ python <example-name>/main.py
 #### 2.3) Routing
 
 ![Routing Flow](./routing/flow.png)
+
+#### 2.3) Orchestrator-worker
+
+![Routing Flow](./orchestrator-worker/flow.png)
