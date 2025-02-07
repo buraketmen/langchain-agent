@@ -1,5 +1,10 @@
 ## LANGCHAIN-AGENT (WORKFLOWS)
 
+**Agent** can be defined in several ways. Some customers define agents as fully autonomous systems that operate independently over extended periods, using various tools to accomplish complex tasks. Others use the term to describe more prescriptive implementations that follow predefined workflows.
+
+- **Workflows** are systems where LLMs and tools are orchestrated through predefined code paths.
+- **Agents**, are systems where LLMs dynamically direct their own processes and tool usage, maintaining control over how they accomplish tasks.
+
 ### 1) Usage
 
 ```bash
@@ -21,16 +26,37 @@ python <example-name>/main.py
 
 #### 2.1) Prompt Chaining
 
+Prompt chaining decomposes a task into a sequence of steps, where each LLM call processes the output of the previous one. You can add programmatic checks (see "gate” in the diagram below) on any intermediate steps to ensure that the process is still on track.
+
+This workflow is ideal for situations where the task can be easily and cleanly decomposed into fixed subtasks. The main goal is to trade off latency for higher accuracy, by making each LLM call an easier task.
+
 ![Promp-chaining Flow](./prompt-chaining/flow.png)
 
 #### 2.2) Parallelization
+
+LLMs can sometimes work simultaneously on a task and have their outputs aggregated programmatically. This workflow, parallelization, manifests in two key variations: Sectioning: Breaking a task into independent subtasks run in parallel. Voting: Running the same task multiple times to get diverse outputs.
+
+Parallelization is effective when the divided subtasks can be parallelized for speed, or when multiple perspectives or attempts are needed for higher confidence results. For complex tasks with multiple considerations, LLMs generally perform better when each consideration is handled by a separate LLM call, allowing focused attention on each specific aspect.
 
 ![Parallelization Flow](./parallelization/flow.png)
 
 #### 2.3) Routing
 
+Routing classifies an input and directs it to a specialized followup task. This workflow allows for separation of concerns, and building more specialized prompts. Without this workflow, optimizing for one kind of input can hurt performance on other inputs.
+
+Routing works well for complex tasks where there are distinct categories that are better handled separately, and where classification can be handled accurately, either by an LLM or a more traditional classification model/algorithm.
+
 ![Routing Flow](./routing/flow.png)
 
 #### 2.3) Orchestrator-worker
 
+In the orchestrator-workers workflow, a central LLM dynamically breaks down tasks, delegates them to worker LLMs, and synthesizes their results.
+
+This workflow is well-suited for complex tasks where you can’t predict the subtasks needed (in coding, for example, the number of files that need to be changed and the nature of the change in each file likely depend on the task). Whereas it’s topographically similar, the key difference from parallelization is its flexibility—subtasks aren't pre-defined, but determined by the orchestrator based on the specific input.
+
 ![Routing Flow](./orchestrator-worker/flow.png)
+
+### 3) References
+
+- [Workflows](https://langchain-ai.github.io/langgraph/tutorials/workflows/)
+- [Building Effective Agents](https://www.anthropic.com/research/building-effective-agents)
