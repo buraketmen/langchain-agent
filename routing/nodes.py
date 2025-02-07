@@ -11,19 +11,19 @@ class Nodes:
 
     def llm_call_1(self, state: GraphState) -> dict:
         """Write a joke."""
-        print("Writing a joke...")
+        print("Agent: Writing a joke...")
         msg = self.llm.invoke(state["input"])
         return {"output": msg.content}
 
     def llm_call_2(self, state: GraphState) -> dict:
         """Write a story."""
-        print("Writing a story...")
+        print("Agent: Writing a story...")
         msg = self.llm.invoke(state["input"])
         return {"output": msg.content}
     
     def llm_call_3(self, state: GraphState) -> dict:
         """Write a poem."""
-        print("Writing a poem...")
+        print("Agent: Writing a poem...")
         msg = self.llm.invoke(state["input"])
         return {"output": msg.content}
 

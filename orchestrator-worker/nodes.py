@@ -29,7 +29,7 @@ class Nodes:
         """Worker writes a section of the report."""
         section = self.llm.invoke(
             [
-                SystemMessage(content="Write a report section following the provided name and description. Include no preamble for each section. Use markdown formatting."),
+                SystemMessage(content="Write a report section following the provided name and description. Include no preamble for each section."),
                 HumanMessage(content=f"Here is the section name: {state['section'].name} and description: {state['section'].description}"),
             ]
         )
